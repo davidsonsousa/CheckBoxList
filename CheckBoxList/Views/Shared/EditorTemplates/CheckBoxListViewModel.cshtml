@@ -1,0 +1,17 @@
+﻿@model CheckBoxList.ViewModels.CheckBoxListViewModel
+
+@foreach (var item in Model.CheckBoxItems)
+{
+	string check = "";
+	if (Model.SelectedValues != null && Model.SelectedValues.Contains(item.Value))
+	{
+		check = "checked=checked";		
+	}
+
+	<div class="checkbox">
+		<label>
+			<input id="@Html.IdFor(m => m.SelectedValues)" type="checkbox" value="@item.Value" name="@Html.NameFor(m => m.SelectedValues)" @check> @item.Text
+		</label>
+	</div>
+}
+
