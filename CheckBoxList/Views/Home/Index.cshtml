@@ -1,17 +1,26 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@{ Layout = null; }
+@model CheckBoxList.Models.Product
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>Products</title>
 </head>
 <body>
-    <div> 
-    </div>
+@using (Html.BeginForm())
+{
+	<div>
+		@Html.LabelFor(m => m.Name)
+		@Html.EditorFor(m => m.Name)
+	</div>
+	<div>
+		@Html.LabelFor(m => m.Type)
+		@Html.EditorFor(m => m.Type)
+	</div>
+	<input type="submit" value="Save" />
+}
+
 </body>
 </html>
