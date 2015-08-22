@@ -10,7 +10,7 @@ namespace CheckBoxList.Controllers
 {
 	public class HomeController : Controller
 	{
-		private CheckBoxListViewModel AllTypeItems()
+		private CheckBoxListViewModel AllTypeItems(string[] selectedValues = null)
 		{
 			var cbList = new CheckBoxListViewModel();
 
@@ -22,6 +22,12 @@ namespace CheckBoxList.Controllers
 										 new CheckBoxItem { Text = "Mobile", Value = "Mobile" },
 										 new CheckBoxItem { Text = "Electronic", Value = "Electronic" }
 									 };
+
+			if (selectedValues != null)
+			{
+				cbList.SelectedValues = selectedValues;
+			}
+
 			return cbList;
 		}
 
@@ -35,10 +41,6 @@ namespace CheckBoxList.Controllers
 			// Setup the checkbox list
 			product.Type = AllTypeItems();
 
-			// If we want to set a value, we need to do it manually
-			// But we can improve the logic here
-			// product.Type.SelectedValues = new string[] { "Computer" };
-
 			return View(product);
 		}
 
@@ -48,8 +50,8 @@ namespace CheckBoxList.Controllers
 			// Show the values we selected
 			Response.Write(string.Join(", ", product.Type.SelectedValues));
 
-			// Set the items again as they are null
-			product.Type = AllTypeItems();
+			// Set the items again as they are null and also set the selected values
+			product.Type = AllTypeItems(product.Type.SelectedValues);
 
 			return View(product);
 		}

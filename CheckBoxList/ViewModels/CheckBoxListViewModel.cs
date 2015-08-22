@@ -9,15 +9,13 @@ namespace CheckBoxList.ViewModels
 {
 	public class CheckBoxListViewModel
 	{
-		public string[] SelectedValues { get; set; }
+		public string[] SelectedValues { get; set; } // I'd put "private set" here but the Model Binder wouldn't work
 		public IEnumerable<CheckBoxItem> CheckBoxItems { get; set; }
 	}
 
 	public class CheckBoxItem
 	{
-		public string Value { get; set; }        // Value of a checkbox
-		public string Text { get; set; }      // Text of a checkbox
-		public object Tags { get; set; }      // Html tags to be applied to checkbox, e.g.: 'new { tagName = "tagValue" }'
-		public bool IsSelected { get; set; }  // Value to select a checkbox on the list
+		public string Value { get; set; }  // Value of a checkbox
+		public string Text { get; set; }   // Text of a checkbox
 	}
 }
